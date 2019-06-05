@@ -1,7 +1,7 @@
 import React from 'react';
 import Cards from './Cards';
 import AddFlashCards from './AddFlashCards';
-import {Container, Header, Divider } from "semantic-ui-react";
+import {Container, Header, Divider, Button, Icon } from "semantic-ui-react";
 import capybara from "./images/capybara.jpg";
 
 class App extends React.Component {
@@ -11,6 +11,7 @@ class App extends React.Component {
       { id: 2, animalName: "Caiman", image: "https://a-z-animals.com/media/animals/images/original/caiman4.jpg", description: "like an alligator", location: "South America", },
       { id: 3, animalName: "Andean Cock of the Rock", image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Rupicola_peruviana_%28male%29_-San_Diego_Zoo-8a.jpg", description: "National Bird of Peru", location: "South America",},
     ],
+    showForm: true,
 
   };
   
@@ -24,6 +25,8 @@ class App extends React.Component {
     this.setState({ cards: [flashCard, ...this.state.cards], });
   };
 
+  
+
   removeFlashCard = (id) => {
     const cards = this.state.cards.filter( card => {
       if (card.id !== id )
@@ -32,24 +35,25 @@ class App extends React.Component {
     this.setState({cards: [...cards], });
   };
 
-  // flipCard = (id) => {
-  //   const cards = this.state.cards.map( card => {
-  //     if (card.id === id){
-  //       card.showFront = false
-  //       this.setState({cards: [card],})
-  //     }
-  //   });
-  // };
+  editFlashCard = (flashCardInfo) => {
+    debugger
+  }
+
+  toggleForm = () => this.setState({showForm: !this.state.showForm,})
 
   render() {
     return (
       <Container style={{paddingTop: "25px"}}>
         <Header as='h1'>Animal Flash Cards</Header>
         <Divider/>
-        <Cards cardList={this.state.cards} remove={this.removeFlashCard}/>
+        <Cards cardList={this.state.cards} remove={this.removeFlashCard} edit={this.editFlashCard}/>
         <br />
         <Divider />
-        <AddFlashCards add={this.addFlashCard}/>
+        <Button icon color="blue" onClick={this.toggleForm}>
+          <Icon name={ this.state.showForm ? 'caret square up outline' : 'caret square down outline'}/>
+        </Button>
+
+       {this.state.showForm ? <AddFlashCards add={this.addFlashCard}/> : null}
       </Container>
     )
   };
