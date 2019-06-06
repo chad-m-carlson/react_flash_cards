@@ -1,6 +1,5 @@
 import React from 'react'
 import {Button, Image, Card, Modal, Header, } from 'semantic-ui-react';
-import EditFlashCard from './EditFlashCard';
 
 class Flashcard extends React.Component{
   state = {
@@ -13,6 +12,12 @@ class Flashcard extends React.Component{
 
   increaseRight = () => {this.setState({ right: this.state.right + 1})};
   increaseWrong = () => {this.setState({ wrong: this.state.wrong + 1})};
+
+  // changeCounters = (which) => {
+  //   if (which === 'right') {
+  //     this.setState({ right: this.state.right +1})
+  //   } else this.setState({ wrong: this.state.wrong +1});
+  // }
   
     
     render(){
@@ -46,13 +51,13 @@ class Flashcard extends React.Component{
                   </Button>} closeIcon>
                     <Header>Edit This FlashCard</Header>
                     <Modal.Content>
-                      <EditFlashCard 
+                      {/* <EditFlashCard 
                       image={this.props.image}
                       description={this.props.description}
                       animalname={this.props.animalName}
                       location={this.props.location}
                       edit={edit}
-                      id={id}/>
+                      id={id}/> */}
                     </Modal.Content>
                   </Modal>
                 </div>
@@ -63,6 +68,7 @@ class Flashcard extends React.Component{
             {!this.state.showFront ? <div>
                 <Button
                   onClick={this.increaseRight}
+                  // onClick={this.changeCounters('right')}
                   color='green'
                   size='tiny'
                   content='Right!'
