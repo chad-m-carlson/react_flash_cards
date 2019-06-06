@@ -15,15 +15,25 @@ class AddFlashCards extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.add(this.state)
+    if (this.props.id){
+      // IF THERE IS A PROP ID BECAUSE YOU ARE EDITING, IT CALLS THE EDIT FUNCTION IN PLAY, USES THE CURRENT ID AND THEN THE VALUES THAT WERE SET IN STATE HERE.
+      this.props.edit({id: this.props.id, ...this.state})
+    }else this.props.add(this.state);
     this.setState({
       animalName: '',
       image: '',
       description: '',
       location: '',
-    })
+    });
   };
 
+  componentDidMount() {
+    // IF THIS FORM MOUNTS AFTER INITIAL RENDERING AND HAS AN ID IN THE PROPS,  IT IS GOING TO SET STATE WITH THE CURRENT PROPS
+    const {animalName, image, description, location} = this.props
+    if (this.props.id){
+      this.setState({animalName,image,description, location,})
+    }
+  }
 
   render(){
     return(
@@ -36,15 +46,15 @@ class AddFlashCards extends React.Component{
             name="animalName"
             value={this.state.animalName}
             onChange={this.handleChange}
-            />
-            <Form.Input
-              fluid
-              label="Location"
-              placeholder="Location"
-              name="location"
-              value={this.state.location}
-              onChange={this.handleChange}
-              />
+          />
+          <Form.Input
+            fluid
+            label="Location"
+            placeholder="Location"
+            name="location"
+            value={this.state.location}
+            onChange={this.handleChange}
+          />
         </Form.Group>
         <Form.Group widths="equal">  
           <Form.Input
@@ -64,7 +74,9 @@ class AddFlashCards extends React.Component{
             onChange={this.handleChange}
             />
         </Form.Group>
-        <Form.Button>Add Animal</Form.Button>
+        <Form.Button>
+          {this.props.id ?" Edit Animal" : "Add Animal"}
+        </Form.Button>
       </Form>
     )
   }

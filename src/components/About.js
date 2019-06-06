@@ -1,7 +1,10 @@
 import React from 'react';
 
 const About = () => (
-  <h1>About</h1>
+  <div>
+    <h1>About</h1>
+    <h3>Put some useful things here</h3>
+  </div>
 )
 
 export default About

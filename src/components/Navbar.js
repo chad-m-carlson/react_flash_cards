@@ -19,6 +19,11 @@ const Navbar = () => (
         See FlashCards
       </Menu.Item>
     </Link>
+    <Link to='/sdfdf'>
+      <Menu.Item>
+        Click here if you dare
+      </Menu.Item>
+    </Link>
   </Menu>
 )
 
