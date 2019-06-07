@@ -1,33 +1,31 @@
-import React from 'react'
+import React, { useState,} from 'react'
 import AddFlashCard from './AddFlashCards';
+import Counter from './Counter';
 import {Button, Image, Card, Modal, Header, } from 'semantic-ui-react';
 
-class Flashcard extends React.Component{
-  state = {
-    showFront: true,
-    right: 0,
-    wrong: 0,
-  }
+const Flashcard =  (props) => {
+  const [showFront, setShowFront] = useState(true);  
 
-  flipCard = () => {this.setState({ showFront: !this.state.showFront})};
-
-  increaseRight = () => {this.setState({ right: this.state.right + 1})};
-  increaseWrong = () => {this.setState({ wrong: this.state.wrong + 1})};
-
-  render(){
-    const {image, description, animalName, location, id, remove, edit} = this.props
+  const flipCard = () => setShowFront( !showFront )
+    const {image, description, animalName, location, id, remove, edit} = props
     return(
-        <Card >
-          <Image src={image} wrapped ui={false} />
+      <Card >
+        <Image src={image} wrapped ui={false} />
           <Card.Content>
             <br />
-            {this.state.showFront ? <div> <Card.Header>Lives in.....</Card.Header><br />
-          <Card.Content>{location}</Card.Content><br />
-          <Card.Description>Factoid: {description}</Card.Description></div> : null}
+            {showFront &&
+            <div> 
+              <Card.Header>Lives in.....</Card.Header>
+              <br />
+              <Card.Content>{location}</Card.Content>
+              <br />
+              <Card.Description>Factoid: {description}</Card.Description>
+            </div>}
           
           {/* CARD BACK */}
-          {!this.state.showFront ? <Card.Header>{animalName}</Card.Header> : null}
-          {!this.state.showFront ? 
+          {!showFront && 
+          <Card.Header>{animalName}</Card.Header>}
+          <div style={showFront ? {display: 'none'}: null }>
             <Card.Content extra>
               <div className='ui two buttons'>
                 <Button 
@@ -39,44 +37,26 @@ class Flashcard extends React.Component{
                 <Modal trigger={
                   <Button 
                   basic color='yellow'
-                  size='tiny'
-                  >
+                  size='tiny'>
                   Edit
                 </Button>} closeIcon>
                   <Header>Edit This FlashCard</Header>
-                  <Modal.Content>
-                    <AddFlashCard {...this.props} edit={edit}
-                    />
-                  </Modal.Content>
-                </Modal>
-              </div>
-            </Card.Content> : null}
-          
-          <br />
-          <br />
-          {!this.state.showFront ? <div>
-              <Button
-                onClick={this.increaseRight}
-                // onClick={this.changeCounters('right')}
-                color='green'
-                size='tiny'
-                content='Right!'
-                icon='thumbs up'
-                label={{ as: 'a', basic: true, color: 'green', pointing: 'left', content: this.state.right }}
-              />
-              <Button
-                onClick={this.increaseWrong}
-                color='red'
-                size='tiny'
-                content='Wrong!'
-                icon='thumbs down'
-                label={{ as: 'a', basic: true, color: 'red', pointing: 'left', content: this.state.wrong }}
-              />
-            </div> : null}
-            <Button onClick={this.flipCard} basic color="blue">Flip</Button>
+                    <Modal.Content>
+                      <AddFlashCard {...props} edit={edit}
+                      />
+                    </Modal.Content>
+                  </Modal>
+                </div>
+              </Card.Content>
+              <br />
+              <br />
+              <Counter /> 
+            </div>
+            <Button onClick={flipCard} basic color="blue">Flip</Button>
         </Card.Content>
         </Card>
       )
     }
-  }
-export default Flashcard
+  
+  
+  export default Flashcard

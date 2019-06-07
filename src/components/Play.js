@@ -24,7 +24,6 @@ class Play extends React.Component {
   };
 
   editFlashCard = (flashCardInfo) => {
-    debugger
     let newFlashCardArray = this.state.cards.map( flashcard => {
       if (flashcard.id === flashCardInfo.id)
         return flashCardInfo
@@ -36,8 +35,9 @@ class Play extends React.Component {
   removeFlashCard = (id) => {
     const cards = this.state.cards.filter( card => {
       if (card.id !== id )
-        return card
-    });
+      return card
+    }
+    );
     this.setState({cards: [...cards], });
   };
 
