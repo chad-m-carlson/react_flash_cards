@@ -16,7 +16,9 @@ const Play = () => {
   };
 
   const addFlashCard = (flashCardInfo) => {
+    console.log(flashCardInfo)
     let flashCard = { id: getId(), ...flashCardInfo };
+    debugger
     setCards([...cards, flashCard], );
   };
 
