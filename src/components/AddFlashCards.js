@@ -34,8 +34,8 @@ const AddFlashCards = (props) => {
       setDescription(props.description);
       setLocation(props.location);
     }
-  },[]);
-
+  },[props.animalName, props.description, props.id, props.image, props.location]);
+//NEED THIS SECOND ARGUMENT TO ONLY TRIGGER THIS FUNCTION OF ONE OF THOSE PROPS CHANGE
 
   return(
     <Form onSubmit={handleSubmit}>

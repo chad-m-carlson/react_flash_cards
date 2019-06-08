@@ -6,9 +6,10 @@ import {Container, Header, Divider, Button, Modal } from "semantic-ui-react";
 
 const Play = () => {
   const [cards, setCards] = useState([
-    { id: 1, animalName: "Capybara", image: capybara, description: "rodent of unusual size", location: "South America", },
-    { id: 2, animalName: "Caiman", image: "https://a-z-animals.com/media/animals/images/original/caiman4.jpg", description: "like an alligator", location: "South America", },
-    { id: 3, animalName: "Andean Cock of the Rock", image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Rupicola_peruviana_%28male%29_-San_Diego_Zoo-8a.jpg", description: "National Bird of Peru", location: "South America",},
+    { id: 1, animalName: "Capybara", image: capybara, description: "rodent of unusual size", location: "South America", moreInfo: "http://www.softschools.com/facts/animals/capybara_facts/48/", },
+    { id: 2, animalName: "Caiman", image: "https://a-z-animals.com/media/animals/images/original/caiman4.jpg", description: "like an alligator", location: "South America", moreInfo: "http://www.softschools.com/facts/animals/caiman_facts/482/", },
+    { id: 3, animalName: "Andean Cock of the Rock", image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Rupicola_peruviana_%28male%29_-San_Diego_Zoo-8a.jpg", description: "National Bird of Peru", location: "South America",moreInfo: "https://nhpbs.org/wild/andeancockoftheRock.asp", },
+    { id: 4, animalName: "Bush Dog", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Speothos_venaticus_Zoo_Praha_2011-5_%28cropped%29.jpg/440px-Speothos_venaticus_Zoo_Praha_2011-5_%28cropped%29.jpg", description: "Has partially webbed feet to help swimming and diving" , location: "Central/South America", moreInfo: "http://www.softschools.com/facts/animals/bush_dog_facts/1107/", }
   ]);
   
   const getId = () => {
@@ -35,7 +36,9 @@ const Play = () => {
     const newCardsArray = cards.filter( card => {
       if (card.id !== id )
       return card
+    return
     }
+    
     );
     setCards([...newCardsArray], );
   };
