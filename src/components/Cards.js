@@ -2,13 +2,14 @@ import React from 'react';
 import Flashcard from './Flashcard';
 import { Card, } from 'semantic-ui-react';
 
-const Cards = ({cardList,remove, edit,}) => (
+const Cards = ({cards,remove, edit,}) => {
+  return (
       <Card.Group>
-        {cardList.map( card => (
+        {cards.map( card => (
         <Flashcard key={card.id} {...card} remove={remove} edit={edit}/>
         ))}
-      </Card.Group>
-    )
+      </Card.Group>)
+}
 
 
 export default Cards
