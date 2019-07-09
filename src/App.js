@@ -9,7 +9,7 @@ import {Container, } from 'semantic-ui-react';
 
 const App = () => (
   <>
-    <Navbar/>
+    {/* <Navbar/> */}
     <Container>
       <Switch>
         <Route exact path='/' component={Home} />
