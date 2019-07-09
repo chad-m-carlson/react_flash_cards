@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/react_flash_cards/static/js/main.fb66d10a.chunk.js",
+    "main.js.map": "/react_flash_cards/static/js/main.fb66d10a.chunk.js.map",
+    "runtime~main.js": "/react_flash_cards/static/js/runtime~main.adc6978d.js",
+    "runtime~main.js.map": "/react_flash_cards/static/js/runtime~main.adc6978d.js.map",
+    "static/css/2.29238a6d.chunk.css": "/react_flash_cards/static/css/2.29238a6d.chunk.css",
+    "static/js/2.0160a30e.chunk.js": "/react_flash_cards/static/js/2.0160a30e.chunk.js",
+    "static/js/2.0160a30e.chunk.js.map": "/react_flash_cards/static/js/2.0160a30e.chunk.js.map",
+    "index.html": "/react_flash_cards/index.html",
+    "precache-manifest.28c878666cada32cf836e40b0fab7eaf.js": "/react_flash_cards/precache-manifest.28c878666cada32cf836e40b0fab7eaf.js",
+    "service-worker.js": "/react_flash_cards/service-worker.js",
+    "static/css/2.29238a6d.chunk.css.map": "/react_flash_cards/static/css/2.29238a6d.chunk.css.map",
+    "static/media/semantic.min.css": "/react_flash_cards/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/capybara.jpg": "/react_flash_cards/static/media/capybara.e9a7e3dd.jpg"
+  }
+}
